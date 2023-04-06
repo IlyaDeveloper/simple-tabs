@@ -162,7 +162,7 @@ body {
 .tabs-content {
   display: flex;
   flex-flow: row wrap;
-  gap: rem(1);
+  gap: 1px;
   place-content: center;
 }
 
