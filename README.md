@@ -36,6 +36,8 @@
                                  then the password field 'pass' can be left unchanged
 
    $ npm run clean-dist       // Complete cleaning of the directory
+   $ npm run build:zip        // Build project and aded to build.zip file, for quick download in github
+                                 You should keep in mind that parsel builds with hashes, so run static files only on the server or local server .
 ```
 
 ## How to edit in localhost

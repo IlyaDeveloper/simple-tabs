@@ -14,8 +14,8 @@
     "clean-dist": "rm -rf dist && mkdir dist",
     "precompile": "npm run clean-dist",
     "start": "npm run precompile && parcel src/html/*.html",
-    "start-tmp": "npm run clean-tmp && parcel --target templates --dist-dir ./tmp",
-    "build": "npm run precompile && parcel build src/html/*.html --no-source-maps --public-url='./'"
+    "build": "npm run precompile && parcel build src/html/*.html --no-source-maps --public-url='./'",
+    "build:zip": "npm run build && node .config.zip.js"
   },
   "devDependencies": {
     "@parcel/optimizer-esbuild": "^2.8.0",
@@ -24,10 +24,10 @@
     "@parcel/resolver-glob": "^2.8.0",
     "@parcel/transformer-image": "^2.6.0",
     "@parcel/transformer-jsonld": "^2.8.0",
+    "@parcel/transformer-pug": "^2.8.3",
     "@parcel/transformer-raw": "^2.8.0",
     "@parcel/transformer-sass": "^2.8.0",
     "@parcel/transformer-webmanifest": "^2.8.0",
-    "@parcel/transformer-pug": "^2.8.3",
     "autoprefixer": "^10.4.13",
     "cross-env": "^7.0.3",
     "cssnano": "^5.1.14",
@@ -46,7 +46,8 @@
   },
   "dependencies": {
     "basic-ftp": "^5.0.1",
-    "caniuse-lite": "^1.0.30001431"
+    "caniuse-lite": "^1.0.30001431",
+    "zip-lib": "^0.7.3"
   },
   "parcelIgnore": [],
   "parcel-namer-rewrite": {
