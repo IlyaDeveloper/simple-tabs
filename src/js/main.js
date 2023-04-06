@@ -1,12 +1,12 @@
 const ANIMATION_KEYFRAME = [
   {
-    filter: "blur(30px)",
+    // filter: "blur(30px)",
     transform: "scale(0.8) translate(0, 80%)",
     transformOrigin: "center",
     opacity: 0,
   },
   {
-    filter: "none",
+    // filter: "none",
     transform: "none",
     transformOrigin: "center",
     opacity: 1,
