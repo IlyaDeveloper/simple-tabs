@@ -1,0 +1,36 @@
+// Global Extends
+%button-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: var(--button-height, rem(55));
+
+  padding: var(--button-gutter-y, rem(10)) var(--button-gutter-x, rem(15));
+
+  font-weight: 700;
+  font-size: var(--button-size, rem(22));
+  letter-spacing: -0.034em;
+  color: var(--button-color, var(--cl-light));
+  text-align: center;
+
+  touch-action: none;
+  outline: unset;
+
+  background: var(--button-fill, var(--cl-primary));
+
+  @media (pointer: fine) {
+    transition: 0.5s linear;
+    transition-property: background-color, box-shadow, border-color, color,
+      opacity, transform;
+    cursor: pointer;
+
+    &:hover {
+      --button-fill: var(--button-fill-hover, #{$secondary});
+    }
+
+    &:active {
+      transform: scale(0.95);
+    }
+  }
+}

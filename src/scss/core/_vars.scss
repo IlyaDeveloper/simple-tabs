@@ -1,0 +1,21 @@
+// Sizes
+$gutterSmall: var(--gutter-small, rem(8)) !default;
+$gutter: var(--gutter, rem(16)) !default;
+$gutterX2: var(--gutterX2, rem(24)) !default;
+
+// Colours
+$primary: var(--cl-primary);
+$secondary: var(--cl-secondary);
+$light: var(--cl-light);
+$dark: var(--cl-dark);
+$dark-light: var(--cl-dark-light);
+$dark-lighten: var(--cl-dark-lighten);
+
+$base-color: $dark;
+
+// Fonts
+$base-font-size: 16px !default;
+$base-font-height: 1.4 !default;
+$font-family-primary: "Ubuntu", sans-serif;
+$font-family-system: "SF Pro", -apple-system, BlinkMacSystemFont, Roboto,
+  "Helvetica Neue", Arial, sans-serif !default;

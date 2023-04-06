@@ -1,0 +1,17 @@
+{
+  "plugins": {
+    "posthtml-include": {
+      "root": "src/html"
+    },
+    "posthtml-modules": {
+      "root": "src/html"
+    },
+    "posthtml-expressions": {
+      locals: {
+      }
+    },
+    "posthtml-img-autosize": {
+      "root": "src/assets/img"
+    }
+  }
+}
