@@ -4,11 +4,11 @@
 @import "core/vars";
 @import "core/reset";
 @import "core/extends";
-/*----------------------------------- Base style */
 
-/*----------------------------------- Main style */
+/*----------------------------------- Import fonts */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
+/*----------------------------------- Base style */
 :root {
   --container-gutter: 3.75rem;
   --container-limit: calc(59rem + (var(--container-gutter) * 2));
@@ -59,8 +59,8 @@ html {
 }
 
 body {
-  /*  position: absolute;
-  inset: 0; */
+  position: absolute;
+  inset: 0;
 
   display: flex;
   flex-flow: column;
@@ -79,7 +79,11 @@ body {
 
 .layout {
   --container-align-items: center;
+
+  flex: 1 1;
 }
+
+/*----------------------------------- Main style */
 
 .container {
   position: var(--container-position, unset);
@@ -104,6 +108,7 @@ body {
 
   &.--active {
     pointer-events: none;
+    opacity: 0.8;
   }
 
   &.--green {
@@ -137,6 +142,7 @@ body {
   flex-flow: column;
   justify-content: center;
 
+  margin: 7vmax auto auto;
   padding: rem(26) 0;
 
   text-align: center;
@@ -152,6 +158,14 @@ body {
   }
 }
 
+.tabs,
+.tabs-content {
+  display: flex;
+  flex-flow: row wrap;
+  gap: rem(2);
+  place-content: center;
+}
+
 .tabs {
   --button-height: 3.75rem;
 
@@ -159,19 +173,19 @@ body {
 }
 
 .tabs-content {
-  display: flex;
-  flex-flow: row wrap;
-  gap: rem(2);
-  place-content: center;
-
-  padding: rem(26) 0;
+  padding: rem(26) 0 !important;
+  margin: 0 auto;
 
   &__item {
     @extend %button-main;
+    place-self: center;
+
+    width: max-content;
 
     white-space: nowrap;
 
     background: var(--button-fill, var(--cl-primary));
+    overflow: hidden;
     will-change: filter;
 
     &[data-tab-content-area="tb-outdoor"] {

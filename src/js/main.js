@@ -1,7 +1,7 @@
-const EFFECT_KEYFRAME = [
+const ANIMATION_KEYFRAME = [
   {
     filter: "blur(30px)",
-    transform: "scale(0.8) translate(0, 120%)",
+    transform: "scale(0.8) translate(0, 80%)",
     transformOrigin: "center",
     opacity: 0,
   },
@@ -13,65 +13,69 @@ const EFFECT_KEYFRAME = [
   },
 ];
 
-const EFFECT_OPTIONS = {
+const ANIMATION_OPTIONS = {
   delay: 0,
-  duration: 900,
   fill: "forwards",
   easing: "cubic-bezier(0,.99,.32,.99)",
   direction: "normal",
 };
 
 class TabsComponent {
-  constructor() {
-    this.tabsArea = "data-tab-area";
-    this.contentArea = "data-tab-content-area";
+  constructor(
+    tabsArea = "data-tab-area",
+    contentArea = "data-tab-content-area",
+    allTargetName = "tb-all",
+    activeClass = "--is-active",
+    hideClass = "gm-hide"
+  ) {
+    this.tabsArea = tabsArea;
+    this.contentArea = contentArea;
 
     this.tabs = document.querySelectorAll(`[${this.tabsArea}]`);
     this.contents = document.querySelectorAll(`[${this.contentArea}]`);
+
+    this.allTargetName = allTargetName;
+    this.activeClass = activeClass;
+    this.hideClass = hideClass;
   }
 
-  effect(item) {
+  appleEffect(item, count = 1, delta = 0.026) {
     item.animate(EFFECT_KEYFRAME, {
-      ...EFFECT_OPTIONS,
+      ...ANIMATION_OPTIONS,
+      duration: Math.round((100 * count) / 2 + 0.026),
     });
   }
 
   tabHendler(elm) {
     let attr = elm.getAttribute(this.tabsArea);
+
     for (let item of this.tabs) {
       let elm = item.getAttribute(this.tabsArea);
 
-      if (elm === attr && attr === "tb-all") {
-        item.classList.add("--active");
-        item.classList.add("gm-hide");
+      if (elm === attr && attr === this.allTargetName) {
+        item.classList.add(this.activeClass);
+        item.classList.add(this.hideClass);
       } else if (elm === attr) {
-        item.classList.add("--active");
+        item.classList.add(this.activeClass);
       } else {
-        item.classList.remove("--active");
-        item.classList.remove("gm-hide");
+        item.classList.remove(this.activeClass);
+        item.classList.remove(this.hideClass);
       }
     }
 
-    this.contents.forEach((item) => {
+    this.contents.forEach((item, index) => {
       let itemAttr = item.getAttribute(this.contentArea);
 
-      if (itemAttr !== attr && attr === "tb-all") {
-        item.classList.remove("gm-hide");
-      } else if (
-        (itemAttr !== attr && attr === "tb-indor") ||
-        (itemAttr !== attr && attr === "tb-outdoor") ||
-        (itemAttr !== attr && attr === "tb-house")
-      ) {
-        item.classList.add("gm-hide");
-      } else {
-        item.classList.remove("gm-hide");
-      }
+      itemAttr !== attr && attr !== this.allTargetName
+        ? item.classList.add(this.hideClass)
+        : item.classList.remove(this.hideClass);
 
-      this.effect(item);
+      this.appleEffect(item, index);
     });
   }
 
   init() {
+    this.tabHendler(this.tabs[0]);
     this.tabs.forEach((item) =>
       item.addEventListener("click", (event) => this.tabHendler(event.target))
     );
