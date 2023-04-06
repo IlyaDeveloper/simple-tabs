@@ -40,9 +40,9 @@ class TabsComponent {
   }
 
   appleEffect(item, count = 1, delta = 0.026) {
-    item.animate(EFFECT_KEYFRAME, {
+    item.animate(ANIMATION_KEYFRAME, {
       ...ANIMATION_OPTIONS,
-      duration: Math.round((100 * count) / 2 + 0.026),
+      duration: (100 * count) / 2 + delta,
     });
   }
 
