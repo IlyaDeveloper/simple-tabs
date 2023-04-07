@@ -1,32 +1,34 @@
 // Global Extends
-%button-main {
+%tab-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  place-self: center;
 
-  min-height: var(--button-height, rem(55));
+  width: max-content;
 
-  padding: var(--button-gutter-y, rem(10)) var(--button-gutter-x, rem(15));
+  min-height: var(--tab-height, rem(55));
+
+  padding: var(--tab-gutter-y, rem(10)) var(--tab-gutter-x, rem(15));
 
   font-weight: 700;
-  font-size: var(--button-size, rem(22));
+  font-size: var(--tab-size, rem(22));
   letter-spacing: -0.034em;
-  color: var(--button-color, var(--cl-light));
+  color: var(--tab-color, var(--cl-light));
   text-align: center;
+  white-space: nowrap;
 
   touch-action: none;
-  outline: unset;
 
-  background: var(--button-fill, var(--cl-primary));
+  background: var(--tab-fill, var(--cl-primary));
 
   @media (pointer: fine) {
     transition: 0.5s linear;
-    transition-property: background-color, box-shadow, border-color, color,
-      opacity, transform;
+    transition-property: background-color, color, opacity, transform;
     cursor: pointer;
 
     &:hover {
-      --button-fill: var(--button-fill-hover, #{$secondary});
+      background: var(--tab-fill-hover, #{$secondary});
     }
 
     &:active {

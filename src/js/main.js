@@ -82,12 +82,10 @@ class TabsComponent {
   }
 }
 
-const app = () => {
-  const tabs = new TabsComponent();
+const tabs = new TabsComponent();
 
-  tabs.init();
-};
+tabs.init();
 
-window.addEventListener("load", (event) => {
-  app();
-});
+// window.addEventListener("load", (event) => {
+//   app();
+// });
